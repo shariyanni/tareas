@@ -1,35 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
   body {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    min-height: 100vh;
     margin: 0;
+    padding: 20px 0;
+    background-color: #FFC3E6; /* Color de fondo rosado intenso */
+    font-family: Arial, sans-serif;
   }
 
   form {
     text-align: center;
+    background-color: #FFDFED; /* Color de fondo rosado suave */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    max-width: 600px;
+    width: 90%;
   }
 
-  form input {
+  form h1, form h3 {
+    color: #DB42B4; /* Color morado vibrante */
+    font-weight: bold;
     margin-bottom: 10px;
-    background-color: #C0E4FC; /* Color celeste para el cuadro de texto */
-    color: purple; /* Color morado para el texto */
-    padding: 5px; /* Añadir un poco de espacio interno */
-    border: none; /* Quitar el borde predeterminado */
+  }
+
+  form input, select {
+    margin-bottom: 10px;
+    background-color: #F9E4F2; /* Color rosa suave para campos de entrada */
+    color: #FF7AAB; /* Color rosa intenso */
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%;
   }
 
   input[type="submit"] {
-    background-color: purple; /* Cambiar el color de fondo del botón de envío */
-    color: white; /* Cambiar el color del texto del botón de envío */
-    padding: 10px 20px; /* Añadir espacio interno al botón */
-    border: none; /* Quitar el borde del botón */
-    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    background-color: #DB42B4; /* Color morado vibrante para el botón */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
-  
+
+  input[type="submit"]:hover {
+    background-color: #C92D9F; /* Cambio de color en el hover */
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-512.png') no-repeat right center / 20px auto;
+    padding-right: 40px;
+    background-color: #D8B8E9; /* Color morado suave para campos de selección */
+    color: #673AB7; /* Color morado */
+  }
 </style>
 </head>
 <head>
@@ -73,12 +110,12 @@
           }
 }
 
-    </script>
+</script>
 </head>
 <body>
     <form method="post" action="post.php">
-        FORMULARIO DE INSCRIPCIONES <br><br><br>
-        Datos personales <br><br><br>
+      <h1>FORMULARIO DE INSCRIPCIONES</h1>
+      <h3>Datos personales</h3>
         Nombres : <input type="text" style="text-transform:uppercase;" value="" onkeyup="javascript:this.value=this.value.toUpperCase();" name="nombre" required minlength="2" maxlength="50" onblur="validarTexto(this)"><br><br>
         Apellido Paterno : <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" name="Apellido_P"required minlength="2" maxlength="50" onblur="validarTexto(this)" ><br><br>
         Apellido Materno : <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" name="Apellido_M"required minlength="2" maxlength="50" onblur="validarTexto(this)"><br><br>
