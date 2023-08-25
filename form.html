@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  form input {
+    margin-bottom: 10px;
+    background-color: #C0E4FC; /* Color celeste para el cuadro de texto */
+    color: purple; /* Color morado para el texto */
+    padding: 5px; /* Añadir un poco de espacio interno */
+    border: none; /* Quitar el borde predeterminado */
+  }
+
+  input[type="submit"] {
+    background-color: purple; /* Cambiar el color de fondo del botón de envío */
+    color: white; /* Cambiar el color del texto del botón de envío */
+    padding: 10px 20px; /* Añadir espacio interno al botón */
+    border: none; /* Quitar el borde del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+  }
+  
+</style>
+</head>
+<head>
+    <meta charset ="UTF-8">
+    <script type="text/javascript">
+       
+
+        function validarTexto(input) {
+            var regex = /^[a-zA-Z\s]*$/;
+
+            if (!regex.test(input.value)) {
+                alert("Por favor, ingresa solo letras.");
+                input.value = input.value.replace(/[^a-zA-Z\s]/g, ''); // Eliminar caracteres no alfabéticos
+                return false;
+            }
+
+            return true;
+        }
+
+        function limpiarNoNumerico(elemento) {
+            elemento.value = elemento.value.replace(/[^\d+]/g, ''); // Remover caracteres no numéricos excepto '+'
+        }
+        
+        function validarTelefono(inputName) {
+          var telefonoInput = document.getElementsByName(inputName)[0];
+          var telefono = telefonoInput.value;
+          
+          if (telefono.length >= 13) {
+              var numeroTelefono = telefono.substring(4); // Obtener el número sin el código de país
+              if (!/^\d{8}$/.test(numeroTelefono)) {
+                  alert("El número de teléfono debe tener 8 cifras después de +591.");
+                  telefonoInput.value = "+591"; // Restaurar el valor inicial
+                  return false;
+              }
+          } else if (telefono.length == 12) {
+              return true;
+          } else {
+              alert("El número de teléfono debe estar en el formato +591XXXXXXXX.");
+              telefonoInput.value = "+591"; // Restaurar el valor inicial
+              return false;
+          }
+}
+
+    </script>
+</head>
+<body>
+    <form method="post" action="post.php">
+        FORMULARIO DE INSCRIPCIONES <br><br><br>
+        Datos personales <br><br><br>
+        Nombres : <input type="text" style="text-transform:uppercase;" value="" onkeyup="javascript:this.value=this.value.toUpperCase();" name="nombre" required minlength="2" maxlength="50" onblur="validarTexto(this)"><br><br>
+        Apellido Paterno : <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" name="Apellido_P"required minlength="2" maxlength="50" onblur="validarTexto(this)" ><br><br>
+        Apellido Materno : <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" name="Apellido_M"required minlength="2" maxlength="50" onblur="validarTexto(this)"><br><br>
+        Direccion : <input type="text" name="Direccion"required minlength="2" maxlength="100" style="text-transform:uppercase;"><br><br>
+        Fecha de Nacimiento: <input type="date" name="fechaNac"required min="1900-01-01"><br><br>
+        Teléfono Fijo: <input type="tel" name="Telefono" value="+591" maxlength="13" oninput="limpiarNoNumerico(this);" onblur="validarTelefono('Telefono');"><br><br>
+        Teléfono Móvil: <input type="tel" name="Celular" value="+591" maxlength="13" oninput="limpiarNoNumerico(this);" onblur="validarTelefono('Celular');" required><br><br>
+        Lugar de Nacimiento: <select name="lugarNac" required>
+          <option value="COCHABAMBA">COCHABAMBA</option>
+          <option value="LA PAZ">LA PAZ</option>
+          <option value="SANTA CRUZ">SANTA CRUZ</option>
+          <option value="POTOSI">POTOSI</option>
+          <option value="ORURO">ORURO</option>
+          <option value="CHUQUISACA">CHUQUISACA</option>
+          <option value="BENI">BENI</option>
+          <option value="PANDO">PANDO</option>
+          <option value="TARIJA">TARIJA</option>
+          <option value="OTRO" selected >OTRO</option>
+        </select><br><br>
+        País: <select name="pais" required>
+          <option value="BRASIL">BRASIL</option>
+          <option value="ARGENTINA">ARGENTINA</option>
+          <option value="COLOMBIA">COLOMBIA</option>
+          <option value="PERÚ">PERÚ</option>
+          <option value="CHILE">CHILE</option>
+          <option value="ECUADOR">ECUADOR</option>
+          <option value="VENEZUELA">VENEZUELA</option>
+          <option value="BOLIVIA">BOLIVIA</option>
+          <option value="GUYANA">GUYANA</option>
+          <option value="PARAGUAY">PARAGUAY</option>
+          <option value="SURINAME">SURINAME</option>
+          <option value="URUGUAY">URUGUAY</option>
+          <option value="OTRO" selected >OTRO</option>
+        </select><br><br>
+        Correo Electrónico : <input type="email" name="Correo"><br><br required> 
+        Carrera: <select name="carrera" required>
+          <option value="INGENIERIA DE SISTEMAS">INGENIERIA DE SISTEMAS</option>
+          <option value="ARQUITECTURA">ARQUITECTURA</option>
+          <option value="DISEÑO GRÁFICO Y PRODUCCIÓN CROSSMEDIA">DISEÑO GRÁFICO Y PRODUCCIÓN CROSSMEDIA</option>
+          <option value="PUBLICIDAD Y MARKETING">PUBLICIDAD Y MARKETING</option>
+          <option value="DERECHO">DERECHO</option>
+          <option value="PERIODISMO">PERIODISMO</option>
+          <option value="PSICOLOGÍA">PSICOLOGÍA</option>
+          <option value="ENFERMERÍA">ENFERMERÍA</option>
+          <option value="BIOQUÍMICA Y FARMACIA">BIOQUÍMICA Y FARMACIA</option>
+          <option value="ODONTOLOGÍA">ODONTOLOGÍA</option>
+          <option value="MEDICINA">MEDICINA</option>
+          <option value="ADMINISTRACIÓN DE EMPRESAS">ADMINISTRACIÓN DE EMPRESAS</option>
+          <option value="ADMINISTRACIÓN DE HOTELERÍA Y TURISMO">ADMINISTRACIÓN DE HOTELERÍA Y TURISMO</option>
+          <option value="CONTADURÍA PÚBLICA" >CONTADURÍA PÚBLICA</option> 
+          <option value="INGENIERÍA COMERCIAL"  >INGENIERÍA COMERCIAL</option>
+          <option value="INGENIERÍA ECONÓMICA" >INGENIERÍA ECONÓMICA</option>
+          <option value="INGENIERÍA ECONÓMICA Y FINANCIERA">INGENIERÍA ECONÓMICA Y FINANCIERA</option>
+          <option value="OTRO" selected >OTRO</option>
+        </select><br><br>
+        <input type="submit" value="ACEPTAR">
+    </form>
+</body>
+</html>
