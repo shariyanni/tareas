@@ -91,23 +91,29 @@
         }
         
         function validarTelefono(inputName) {
-          var telefonoInput = document.getElementsByName(inputName)[0];
-          var telefono = telefonoInput.value;
-          
-          if (telefono.length >= 13) {
-              var numeroTelefono = telefono.substring(4); // Obtener el número sin el código de país
-              if (!/^\d{8}$/.test(numeroTelefono)) {
-                  alert("El número de teléfono debe tener 8 cifras después de +591.");
-                  telefonoInput.value = "+591"; // Restaurar el valor inicial
-                  return false;
-              }
-          } else if (telefono.length == 12) {
-              return true;
-          } else {
-              alert("El número de teléfono debe estar en el formato +591XXXXXXXX.");
-              telefonoInput.value = "+591"; // Restaurar el valor inicial
-              return false;
-          }
+    var telefonoInput = document.getElementsByName(inputName)[0];
+    var telefono = telefonoInput.value;
+
+    if (telefono.length >= 12 && telefono.length <= 13) {
+        if (telefono.startsWith("+591")) {
+            var numeroTelefono = telefono.substring(4); // Obtener el número sin el código de país
+            if (/^\d{8}$/.test(numeroTelefono)) {
+                return true; // Teléfono válido
+            } else {
+                alert("El número de teléfono debe tener 8 cifras después de +591.");
+                telefonoInput.value = "+591"; // Restaurar el valor inicial
+                return false;
+            }
+        } else {
+            alert("El número de teléfono debe empezar con +591.");
+            telefonoInput.value = "+591"; // Restaurar el valor inicial
+            return false;
+        }
+    } else {
+        alert("El número de teléfono debe estar en el formato +591XXXXXXXX.");
+        telefonoInput.value = "+591"; // Restaurar el valor inicial
+        return false;
+    }
 }
 
 </script>
